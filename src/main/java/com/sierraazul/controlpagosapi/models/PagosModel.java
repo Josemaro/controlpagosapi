@@ -53,7 +53,7 @@ public class PagosModel {
     private String fechaContabilidad1;
     private String fechaContabilidad2;
     private String estadoControlPrevio;
-    private String reponsableContabilidad;
+    private String responsableContabilidad;
     private String comprobanteContabilidad;
     private String montoContabilidad;
     private String retencionContabilidad;
