@@ -7,13 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-    
-@Getter
-@Setter
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
+@Data
 @Table(name = "pagos")
+@AllArgsConstructor
+@NoArgsConstructor
 public class PagosModel {
 
     @Id
@@ -50,8 +52,8 @@ public class PagosModel {
     private String estadoDocumento;
     private String fechaEntregaContabilidad;
     private String ultimaModificacion;
-    private String fechaContabilidad1;
-    private String fechaContabilidad2;
+    private String fechaContabilidad_1;
+    private String fechaContabilidad_2;
     private String estadoControlPrevio;
     private String responsableContabilidad;
     private String comprobanteContabilidad;
