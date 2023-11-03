@@ -22,6 +22,8 @@ public class UsuarioModel {
 
     @Column(unique = true,  nullable = false) 
     private String email;
+    private String password;
+    
     private Integer prioridad;
 
     public UsuarioModel() {
@@ -75,5 +77,12 @@ public class UsuarioModel {
         this.nroDocumento = nroDocumento;
     }
 
-    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }

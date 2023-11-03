@@ -34,6 +34,9 @@ public class UsuarioService {
         return usuarioRepository.findById(id);
     }
 
+    public Optional<UsuarioModel> obtenerPorCorreo(String email){
+        return usuarioRepository.findByEmail(email);
+    }
 
     public Page<UsuarioModel>  obtenerPorPrioridad(Integer prioridad,Pageable pageable) {
         return usuarioRepository.findByPrioridad(prioridad,pageable);
