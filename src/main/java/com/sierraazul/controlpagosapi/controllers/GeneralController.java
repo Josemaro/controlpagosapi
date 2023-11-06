@@ -3,6 +3,7 @@ package com.sierraazul.controlpagosapi.controllers;
 import java.util.Optional;
 
 import com.sierraazul.controlpagosapi.dto.LoginDto;
+import com.sierraazul.controlpagosapi.dto.ResponseLoginDto;
 import com.sierraazul.controlpagosapi.models.UsuarioModel;
 import com.sierraazul.controlpagosapi.services.UsuarioService;
 
@@ -23,7 +24,8 @@ public class GeneralController {
     UsuarioService usuarioService;
 
     @PostMapping("/login")
-    public UsuarioModel login(@RequestBody LoginDto login) {
+    public ResponseLoginDto login(@RequestBody LoginDto login) {
+        ResponseLoginDto response = new ResponseLoginDto();
         try {
             // Static getInstance method is called with hashing MD5
             MessageDigest md = MessageDigest.getInstance("MD5");
@@ -42,15 +44,19 @@ public class GeneralController {
             UsuarioModel result = usuarioService.obtenerPorCorreo(login.email).get();
 
             if (result.getEmail().equals(login.email) && result.getPassword().equals(login.password)) {
-                return result;
+                response.setUsuario(result);
+                response.setMsg("OK");
+                return response;
 
             } else {
-                return null;
+                response.setMsg("Usuario o contraseña incorrecta");
+                return response;
             }
         }
         // For specifying wrong message digest algorithms
         catch (Exception e) {
-            return null;
+            response.setMsg("No se encontró correo electrónico");
+            return response;
         }
     }
 }
